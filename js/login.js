@@ -1,47 +1,41 @@
 const auth = firebase.auth();
 
-// 🔷 Login button logic
-document.getElementById('loginBtn').addEventListener('click', () => {
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value.trim();
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const loginBtn = document.getElementById('loginBtn');
+const signupBtn = document.getElementById('signupBtn');
+
+async function handleAuth(action) {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
 
     if (!email || !password) {
         alert("Please enter both email and password.");
         return;
     }
 
-    auth.signInWithEmailAndPassword(email, password)
-        .then(() => {
-            // ✅ Redirect to main page
-            window.location.href = "index.html";
-        })
-        .catch(error => {
-            console.error(error);
-            alert(error.message);
-        });
-});
+    if (action === 'signup' && password.length < 6) {
+        alert("Password must be at least 6 characters.");
+        return;
+    }
 
-// 🔷 Optional: Sign Up button logic (if you have a signup button in login.html)
-const signupBtn = document.getElementById('signupBtn');
-
-if (signupBtn) {
-    signupBtn.addEventListener('click', () => {
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        if (!email || !password) {
-            alert("Please enter both email and password.");
-            return;
+    try {
+        if (action === 'login') {
+            await auth.signInWithEmailAndPassword(email, password);
+        } else {
+            await auth.createUserWithEmailAndPassword(email, password);
         }
 
-        auth.createUserWithEmailAndPassword(email, password)
-            .then(() => {
-                // ✅ Redirect to main page
-                window.location.href = "index.html";
-            })
-            .catch(error => {
-                console.error(error);
-                alert(error.message);
-            });
-    });
+        // ✅ Redirect to main page
+        window.location.href = "index.html";
+    } catch (error) {
+        console.error(error);
+        alert(error.message);
+    }
+}
+
+loginBtn.addEventListener('click', () => handleAuth('login'));
+
+if (signupBtn) {
+    signupBtn.addEventListener('click', () => handleAuth('signup'));
 }
