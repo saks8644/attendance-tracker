@@ -1,3 +1,9 @@
+firebase.auth().onAuthStateChanged(user => {
+    if (!user) {
+        window.location.href = "login.html";
+    }
+});
+//update to include the redirect if not logged in
 let subjects = [];
 let chart;
 

@@ -22,7 +22,13 @@
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center p-4">
 
-<h1 class="text-3xl font-bold mb-6">🎯 Attendance Tracker</h1>
+<!-- 🔷 Title -->
+<div class="flex justify-between items-center w-full max-w-2xl mb-4">
+  <h1 class="text-3xl font-bold">🎯 Attendance Tracker</h1>
+  <div id="logout" style="display:none;">
+    <button onclick="logout()" class="bg-red-600 hover:bg-red-700 px-4 py-1 rounded text-sm">Log Out</button>
+  </div>
+</div>
 
 <!-- 🔷 Authentication -->
 <div id="auth" class="w-full max-w-sm space-y-2 mb-4">
@@ -32,10 +38,6 @@
     <button onclick="signup()" class="flex-1 bg-green-600 hover:bg-green-700 p-2 rounded">Sign Up</button>
     <button onclick="login()" class="flex-1 bg-blue-600 hover:bg-blue-700 p-2 rounded">Log In</button>
   </div>
-</div>
-
-<div id="logout" style="display:none;" class="mb-4">
-  <button onclick="logout()" class="bg-red-600 hover:bg-red-700 p-2 rounded">Log Out</button>
 </div>
 
 <!-- 🔷 Attendance Form -->
