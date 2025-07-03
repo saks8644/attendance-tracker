@@ -1,0 +1,15 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+h1 {
+  text-shadow: 1px 1px 4px #000;
+}
+
+button {
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
