@@ -10,8 +10,9 @@ const firebaseConfig = {
   measurementId: "G-N0EBBG0VE0"
 };
 
-// Initialize Firebase (compat SDK, no imports needed here)
+// 🔷 Initialize Firebase (must be first)
 firebase.initializeApp(firebaseConfig);
 
+// 🔷 Then get auth & db
 const auth = firebase.auth();
 const db = firebase.firestore();

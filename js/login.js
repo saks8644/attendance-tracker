@@ -1,4 +1,4 @@
-const auth = firebase.auth();
+
 
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');

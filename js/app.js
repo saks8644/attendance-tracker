@@ -1,6 +1,6 @@
-// 🔷 Firebase references
-const db = firebase.firestore();
-const auth = firebase.auth();
+// app.js
+
+// 🔷 Firebase references are already initialized in firebase-config.js
 
 let subjects = [];
 let chart;
